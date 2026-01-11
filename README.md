@@ -1,4 +1,4 @@
-3D Industrial Anomaly Visualization (Unity Prototype)
+# 3D Industrial Anomaly Visualization (Unity Prototype)
 
 A **UX Engineering prototype** exploring interaction patterns for "Digital Twin" industrial dashboards. This project demonstrates how **3D Exploded Views** and **State-Based Visuals** can reduce cognitive load for reliability engineers monitoring complex machinery.
 
@@ -12,9 +12,14 @@ To communicate urgency without relying on text, I implemented a generic **State 
 * **Critical State:** Red alert, rapid flash (2.0Hz) to trigger immediate operator attention.
 
 ### 2. Interactive Inspection (Exploded View)
-Complex internal failures are often obscured by the machine's casing.
+Complex internal failures are often obscured by the machine's casing. The Exploded View feature spreads outward all model parts according to a defined axis to visualize internal components.
+
+![3D Exploded View Demonstration](docs/exploded-view-demo.png)<img width="821" height="367" alt="Screenshot 2026-01-11 at 14 39 11" src="https://github.com/user-attachments/assets/4c938137-1a98-4925-97f9-4aa826347d03" />
+
+*Figure 1: Visualization of the Exploded View interacting with the Anomaly State.*
+
 * **Interaction:** Direct manipulation (Click-to-Expand).
-* **Behavior:** A linear interpolation (`Lerp`) smoothly separates components along their local vectors, allowing the user to inspect internal heatmaps without losing context of the assembly structure.
+* **Behavior:** A linear interpolation (`Lerp`) smoothly separates components along their local vectors. By default, the explosion's center is located at the origin, but the script allows for custom pivot points to control the scatter direction.
 
 ### 3. Data Simulation
 * The `MockDataStream.cs` script simulates a JSON payload from an anomaly detection backend, proving the system's ability to react to live `severity` flags dynamically.
@@ -23,3 +28,6 @@ Complex internal failures are often obscured by the machine's casing.
 * **Engine:** Unity 2022 (LTS)
 * **Language:** C# (Focus on Interaction Logic & Coroutines)
 * **Pattern:** Component-Based State Management
+
+---
+*Developed as a proof-of-concept for Industrial HMI interactions.*
